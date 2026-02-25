@@ -21,8 +21,8 @@ body {
     height: 100%;
     background: linear-gradient(-45deg, #007a3d, #ffffff, #ce1126, #000000);
     background-size: 400% 400%;
-    animation: gradientMove 12s ease infinite;
-    z-index: -1;
+    animation: gradientMove 15s ease infinite;
+    z-index: -2;
 }
 
 @keyframes gradientMove {
@@ -31,44 +31,83 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Fireworks Canvas */
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Floating Kuwait Flag */
+.floating-flag {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    font-size: 60px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
 /* Glass Card */
 .card {
-    backdrop-filter: blur(15px);
-    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.08);
     padding: 50px;
     border-radius: 25px;
     text-align: center;
     color: white;
     width: 90%;
     max-width: 600px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.4);
-    animation: fadeIn 1.5s ease;
+    box-shadow: 0 0 60px rgba(0,0,0,0.6);
+    animation: intro 1.5s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes intro {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
+/* Hero Title */
 .title {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, #007a3d, #ce1126);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
+@keyframes titleGlow {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    to { text-shadow: 0 0 25px rgba(255,255,255,0.8); }
+}
+
+/* Dates */
 .date {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    line-height: 1.6;
 }
 
+/* Arabic greeting */
 .arabic {
-    font-size: 1.2rem;
     direction: rtl;
     margin-bottom: 30px;
     line-height: 1.8;
 }
 
-/* Button */
+/* 3D Button */
 button {
     padding: 15px 35px;
     font-size: 1rem;
@@ -78,12 +117,13 @@ button {
     background: linear-gradient(45deg, #007a3d, #ce1126);
     color: white;
     font-weight: bold;
-    transition: 0.3s;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 0 #004d26;
 }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+button:active {
+    transform: translateY(6px);
+    box-shadow: 0 0px 0 #004d26;
 }
 
 /* Creator */
@@ -91,7 +131,6 @@ button:hover {
     margin-top: 25px;
     font-size: 0.9rem;
     opacity: 0.8;
-    letter-spacing: 1px;
 }
 
 .creator span {
